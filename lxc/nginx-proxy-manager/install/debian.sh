@@ -232,6 +232,8 @@ systemctl enable npm
 
 # Start services
 log "Starting services"
+sed -i 's/^pid/#pid/' /usr/local/openresty/nginx/conf/nginx.conf
+echo "pid /usr/local/openresty/nginx/logs/nginx.pid;" >> /usr/local/openresty/nginx/conf/nginx.conf
 runcmd systemctl start openresty
 runcmd systemctl start npm
 
